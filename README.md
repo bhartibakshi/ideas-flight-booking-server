@@ -1,3 +1,3 @@
-# ideas-repo
+# ideas-flight-booking-server
 
-Repository for ideas projects
+Repository for ideas project for shortest flight route
