@@ -290,7 +290,8 @@ public class ServiceTest {
         Map<String, BigDecimal> costMap = billingService.getFlightCost( resultFlightDetailsList, SeatType.AISLE.name(),
                                                                         SeatClass.BUSINESS.name() );
 
-        printItinerary( resultFlightDetailsList, costMap, SeatType.AISLE.name(), SeatClass.BUSINESS.name() );
+        printItinerary( resultFlightDetailsList, costMap, SeatType.AISLE.name(), SeatClass.BUSINESS.name(), terminal8,
+                        terminal4 );
     }
 
 
@@ -318,7 +319,8 @@ public class ServiceTest {
                                                                         SeatType.WINDOW.name(),
                                                                         SeatClass.BUSINESS.name() );
 
-        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.BUSINESS.name() );
+        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.BUSINESS.name(), terminal1,
+                        terminal5 );
     }
 
 
@@ -358,7 +360,8 @@ public class ServiceTest {
                                                                         SeatType.WINDOW.name(),
                                                                         SeatClass.ECONOMY.name() );
 
-        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.ECONOMY.name() );
+        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.ECONOMY.name(), terminal1,
+                        terminal6 );
     }
 
 
@@ -373,16 +376,18 @@ public class ServiceTest {
         Map<String, BigDecimal> costMap = billingService.getFlightCost( resultFlightDetailsList,
                                                                         SeatType.WINDOW.name(),
                                                                         SeatClass.ECONOMY.name() );
-        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.ECONOMY.name() );
+        printItinerary( resultFlightDetailsList, costMap, SeatType.WINDOW.name(), SeatClass.ECONOMY.name(), terminal8,
+                        terminal5 );
     }
 
 
     private void printItinerary( List<FlightDetails> resultFlightDetailsList, Map<String, BigDecimal> costMap,
-                                 String seatType, String seatClass ) {
+                                 String seatType, String seatClass, AirTerminal sourceTerminal,
+                                 AirTerminal destinationTerminal ) {
         if ( !resultFlightDetailsList.isEmpty() ) {
             Itinerary itinerary = new Itinerary();
-            itinerary.setSourceAirTerminal( terminal1 );
-            itinerary.setDestAirTerminal( terminal6 );
+            itinerary.setSourceAirTerminal( sourceTerminal );
+            itinerary.setDestAirTerminal( destinationTerminal );
             itinerary.setFlightDetails( resultFlightDetailsList );
             itinerary.setSeatPreference( seatType );
             itinerary.setClassPreference( seatClass );
